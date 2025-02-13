@@ -28,7 +28,7 @@ STRIPE_SECRET_KEY = "sk_test_51Qjd71DN12ArrVQae1mf4SJqUDYpeurBA1n0FWtehmyjx6Ypx6
 DEBUG = True
 
 ALLOWED_HOSTS = ["takuaki99.pythonanywhere.com", "localhost"]
-MYSITE_DOMAIN = ["http://localhost:8000", "pythonanywhere.com"]
+MYSITE_DOMAIN = ["http://localhost:8000", "https://takuaki99.pythonanywhere.com"]
 
 
 # Application definition
