@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, ListView
 from django.views.generic.base import TemplateView, View
+from django.http import HttpResponse
 
 import stripe
 
