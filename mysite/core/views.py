@@ -5,7 +5,6 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, ListView
 from django.views.generic.base import TemplateView, View
-from django.http import HttpResponse
 
 import stripe
 
@@ -212,8 +211,7 @@ class OrderView(View):
                 success_url=settings.MYSITE_DOMAIN + "/success/",
             )
         except Exception as e:
-            # 例外が発生した場合、HttpResponseを返す
-            return HttpResponse(f"Error: {str(e)}", status=500)
+            return str(e)
         # 2-3. 決済ページにリダイレクト
         return redirect(checkout_session.url)
 
