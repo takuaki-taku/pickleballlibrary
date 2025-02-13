@@ -3,19 +3,8 @@ from django.db import models
 
 """
 ---------------------------
-ユーザーモデルの読み込み方法３種
+ユーザーモデルの読み込み
 ---------------------------
-
-1. settingsファイルから取得
-from django.conf import settings
-User = settings.AUTH_USER_MODEL
-
-2. get_user_modelで取得
-from django.contrib.auth import get_user_model
-User = get_user_model()
-
-3. 直接インポートして取得
-from accounts.models import CustomUser
 
 """
 
@@ -63,7 +52,7 @@ class CartItem(models.Model):
     @property
     def total_price(self):
         """
-        カートアイテムの合計金額を算出するメソッドです。
+        カートアイテムの合計金額を算出するメソッド。
         """
         return self.item.price * self.quantity
 
@@ -84,7 +73,7 @@ class Cart(models.Model):
 
     def add_cart_item(self, new_cart_item):
         """
-        カートアイテムをカートに追加するメソッドです。
+        カートアイテムをカートに追加するメソッド。
         [内容]
         1. すでに商品がカートに存在する場合は、その商品のquantityを増やすだけの処理
         2. そうでなければ、新たにカートアイテムを追加する処理
@@ -106,7 +95,7 @@ class Cart(models.Model):
     @property
     def total_price(self):
         """
-        カートの中にある全カートアイテムの総額を算出するメソッドです。
+        カートの中にある全カートアイテムの総額を算出するメソッド。
         """
         return sum([cart_item.total_price for cart_item in self.cart_items.all()])
 
