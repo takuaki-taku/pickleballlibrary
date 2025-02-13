@@ -15,8 +15,8 @@
 
 ## 技術スタック
 
-*   **Python:** 3.13.0
-*   **Django:** 5.1.5
+*   **Python:** 3.8.18
+*   **Django:** 4.2.19
 *   **SQLite:** データベース
 *   **HTML:** テンプレート
 *   **CSS:** Bootstrap 5 (スタイル)
@@ -26,7 +26,7 @@
 
 1.  **リポジトリのクローン:**
     ```bash
-    git clone https://github.com/takuaki-taku/django_ecsite.git
+    git clone https://github.com/takuaki-taku/pickleballlibrary.git
     cd mysite
     ```
 
