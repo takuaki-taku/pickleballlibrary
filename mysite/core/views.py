@@ -211,7 +211,8 @@ class OrderView(View):
                 success_url=settings.MYSITE_DOMAIN + "/success/",
             )
         except Exception as e:
-            return str(e)
+            # 例外が発生した場合、HttpResponseを返す
+            return HttpResponse(f"Error: {str(e)}", status=500)
         # 2-3. 決済ページにリダイレクト
         return redirect(checkout_session.url)
 
