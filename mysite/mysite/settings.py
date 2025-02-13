@@ -27,7 +27,7 @@ STRIPE_SECRET_KEY = "sk_test_51Qjd71DN12ArrVQae1mf4SJqUDYpeurBA1n0FWtehmyjx6Ypx6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [takuaki99.pythonanywhere.com]
 MYSITE_DOMAIN = ["http://localhost:8000", "takuaki99.pythonanywhere.com"]
 
 
