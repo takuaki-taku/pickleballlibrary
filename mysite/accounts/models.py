@@ -10,7 +10,7 @@ from core.models import Cart
 # Create your models here.
 """
 カスタムのユーザーマネージャを作成するときは、下記Djangoソースコードから
-'UserManager'クラスをコピぺすると楽です。
+'UserManager'クラスをコピー
 https://github.com/django/django/blob/main/django/contrib/auth/models.py
 """
 

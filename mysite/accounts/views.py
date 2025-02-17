@@ -3,7 +3,6 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.views.generic.base import TemplateView
 
-
 from .forms import SignupForm
 
 # Create your views here.
