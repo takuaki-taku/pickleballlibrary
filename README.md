@@ -8,7 +8,7 @@
 
 以下は、データベースのER図です。
 
-![ER Diagram](static/images/ER_Diagram.png)
+![ER Diagram](mysite/static/images/ER_Diagram.png)
 
 ## 機能
 
