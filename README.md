@@ -56,22 +56,35 @@
     pip install -r requirements.txt
     ```
 
-5.  **マイグレーションの実行:**
+5.  **環境変数の設定:**
+    ```bash
+    # .env.exampleをコピーして.envを作成
+    cp .env.example .env
+    ```
+    
+    `.env`ファイルに以下の環境変数を設定してください：
+    - `SECRET_KEY`: Djangoのシークレットキー（本番環境では必ず変更してください）
+    - `STRIPE_SECRET_KEY`: Stripeのシークレットキー（Stripeダッシュボードから取得）
+    
+    **注意:** `.env`ファイルは`.gitignore`に含まれているため、コミットされません。
+    本番環境では、環境変数を直接設定してください。
+
+6.  **マイグレーションの実行:**
     ```bash
     python manage.py migrate
     ```
 
-6.  **スーパーユーザーの作成:**
+7.  **スーパーユーザーの作成:**
     ```bash
     python manage.py createsuperuser
     ```
 
-7.  **開発サーバーの起動:**
+8.  **開発サーバーの起動:**
     ```bash
     python manage.py runserver
     ```
 
-8.  **ブラウザでアクセス:**
+9.  **ブラウザでアクセス:**
     *   `http://127.0.0.1:8000/` にアクセスして、サイトを表示します。
     *   `http://127.0.0.1:8000/admin/` にアクセスして、管理サイトを表示します。
 

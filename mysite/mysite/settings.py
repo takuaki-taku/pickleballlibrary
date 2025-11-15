@@ -21,8 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-9lf2y!gfxu2a-&p0ks@c!b)1my!%l_%)k!c!c4lp8dk35_aykj"
-STRIPE_SECRET_KEY = "sk_test_51Qjd71DN12ArrVQae1mf4SJqUDYpeurBA1n0FWtehmyjx6Ypx60oDdi7eTcRMEtGgs12lu49vRP5aAuzXGWcJA9a00rFov8vd2"
+# 環境変数から読み込む（.envファイルを使用）
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-change-this-in-production")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
