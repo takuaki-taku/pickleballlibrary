@@ -232,9 +232,11 @@ class OrderView(View):
                 phone_number_collection={"enabled": True},  # 任意
                 shipping_address_collection={"allowed_countries": ["JP"]},  # 任意
                 success_url=settings.MYSITE_DOMAIN + "/success/",
+                cancel_url=settings.MYSITE_DOMAIN + "/cart/" + str(order_user.id) + "/",
             )
         except Exception as e:
-            return str(e)
+            from django.http import HttpResponse
+            return HttpResponse(f"Stripe Error: {str(e)}", status=500)
         # 2-3. 決済ページにリダイレクト
         return redirect(checkout_session.url)
 

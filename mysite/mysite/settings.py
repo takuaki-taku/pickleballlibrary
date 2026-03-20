@@ -43,7 +43,8 @@ STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 DEBUG = True
 
 ALLOWED_HOSTS = ["takuaki99.pythonanywhere.com", "localhost"]
-MYSITE_DOMAIN = ["http://localhost:8000", "https://takuaki99.pythonanywhere.com"]
+# Domain settings for Stripe
+MYSITE_DOMAIN = os.getenv("MYSITE_DOMAIN", "http://localhost:8000")
 
 
 # Application definition
