@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env_paths = [
     os.path.join(BASE_DIR.parent, '.env'),  # Project root
     os.path.join(BASE_DIR, '.env'),         # mysite directory
+    os.path.expanduser('~/.env'),           # Home directory (PythonAnywhere default)
 ]
 
 for env_path in env_paths:
