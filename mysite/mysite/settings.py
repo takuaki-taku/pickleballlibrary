@@ -18,7 +18,16 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load .env file
-load_dotenv(os.path.join(BASE_DIR.parent, '.env'))
+# Try multiple locations for .env file
+env_paths = [
+    os.path.join(BASE_DIR.parent, '.env'),  # Project root
+    os.path.join(BASE_DIR, '.env'),         # mysite directory
+]
+
+for env_path in env_paths:
+    if os.path.exists(env_path):
+        load_dotenv(env_path)
+        break
 
 
 # Quick-start development settings - unsuitable for production
