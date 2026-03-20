@@ -88,6 +88,11 @@ class ItemView(DetailView):
         cart_item = CartItem(item=item, quantity=quantity)
         # 3. 作成したカートアイテムをユーザーのカートに追加
         user = self.request.user
+        # カートがなければ作成
+        if not user.cart:
+            from core.models import Cart
+            user.cart = Cart.objects.create()
+            user.save()
         user.cart.add_cart_item(cart_item)
         # 4. カートページにリダイレクト
         return redirect(self.get_success_url())
@@ -106,6 +111,11 @@ class CartView(LoginRequiredMixin, OnlyYouMixin, DetailView):
         カートオブジェクトを取り出せるように、以下の通りオーバーライドします。
         """
         user = super().get_object(queryset)
+        # カートがなければ作成
+        if not user.cart:
+            from core.models import Cart
+            user.cart = Cart.objects.create()
+            user.save()
         return user.cart
 
 
@@ -127,6 +137,10 @@ class DeleteCartItemView(LoginRequiredMixin, OnlyYouMixin, DeleteView):
         # 1. formからカートアイテムのpkを取得
         cart_item_pk = self.request.POST["cart_item_pk"]
         # 2. カートの中から、取得したpkと一致するカートアイテムを取得
+        # カートがない場合はエラーになるのでチェック
+        if not user.cart:
+             from django.http import Http404
+             raise Http404("Cart does not exist")
         cart_item = user.cart.cart_items.get(id=cart_item_pk)
         return cart_item
 
@@ -162,7 +176,18 @@ class OrderView(View):
         """
         # 1-1. Orderオブジェクトを作成
         order_user = self.request.user
+        # カートがなければ作成（基本的にはあり得ないが安全のため）
+        if not order_user.cart:
+            from core.models import Cart
+            order_user.cart = Cart.objects.create()
+            order_user.save()
+        
         order_cart = order_user.cart
+        
+        # カートが空の場合はリダイレクト
+        if not order_cart.cart_items.exists():
+            return redirect('home')
+            
         order_obj = Order.objects.create(
             user=order_user,
             order_price=order_cart.total_price,
