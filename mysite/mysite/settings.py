@@ -23,6 +23,8 @@ env_paths = [
     os.path.join(BASE_DIR.parent, '.env'),  # Project root
     os.path.join(BASE_DIR, '.env'),         # mysite directory
     os.path.expanduser('~/.env'),           # Home directory (PythonAnywhere default)
+    '/home/takuaki99/pickleballlibrary/.env', # Project root on PythonAnywhere
+    '/home/takuaki99/.env',                 # Home directory on PythonAnywhere
 ]
 
 for env_path in env_paths:
